@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'https://cipherapp.onrender.com';
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'https://cipherapp-1.onrender.com';
 
 export const fetchMe = async (token) => {
   const res = await axios.get(`${BACKEND_URL}/api/auth/me`, {

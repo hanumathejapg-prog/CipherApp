@@ -1,7 +1,7 @@
 import { Client } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'https://cipherapp.onrender.com';
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'https://cipherapp-1.onrender.com';
 
 export const connectChat = ({ token, userId, onPublic, onPrivate, onPresence, onReadReceipt }) => {
   const client = new Client({
