@@ -1,0 +1,49 @@
+# Backend
+backend/target/
+target/
+*.jar
+
+backend/.classpath
+backend/.project
+backend/.settings/
+backend/.idea/
+backend/*.iml
+
+backend/pom.xml.tag
+backend/pom.xml.releaseBackup
+backend/pom.xml.versionsBackup
+backend/pom.xml.next
+backend/release.properties
+backend/dependency-reduced-pom.xml
+
+# Frontend
+frontend/node_modules/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+node_modules/
+frontend/build/
+frontend/dist/
+frontend/.cache/
+
+frontend/.env
+frontend/.env.*
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
