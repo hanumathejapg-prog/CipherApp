@@ -25,7 +25,7 @@ public class SecurityConfig {
     private final OAuth2SuccessHandler oAuth2SuccessHandler;
     private final CustomOAuth2UserService customOAuth2UserService;
 
-    @Value("${app.frontend.origin:http://localhost:3000}")
+    @Value("${app.frontend.origin:https://cipher-app-three.vercel.app/}")
     private String frontendOrigin;
 
     public SecurityConfig(JwtAuthFilter jwtAuthFilter,

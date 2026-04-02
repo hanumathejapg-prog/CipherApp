@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
-    @Value("${app.frontend.origin:http://localhost:3000}")
+    @Value("${app.frontend.origin:https://cipher-app-three.vercel.app/}")
     private String frontendOrigin;
 
     @Override
