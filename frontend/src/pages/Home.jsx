@@ -126,7 +126,7 @@ const Home = () => {
       },
       onPresence: (updatedUsers) => setUsers(updatedUsers),
       onReadReceipt: (receipt) => {
-        console.log('📨 [RECEIPT] Read receipt arrived!', {
+        console.log(' [RECEIPT] Read receipt arrived!', {
           messageId: receipt.id,
           senderId: receipt.senderId,
           receiverId: receipt.receiverId,
@@ -428,7 +428,6 @@ const Home = () => {
           currentId={user.id}
           selectedId={selectedUser?.id}
           onSelect={(selected) => {
-            if (selected.id === user.id) return;
             setSelectedUser(selected);
             setSelectedChat(null);
           }}
