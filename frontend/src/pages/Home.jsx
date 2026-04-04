@@ -188,6 +188,9 @@ const Home = () => {
     if (!selectedUser || !token) {
       return;
     }
+    if (selectedUser.id === user.id) {
+      return;
+    }
     const key = `${[user.id, selectedUser.id].sort().join('|')}`;
     fetchPrivateMessages(token, selectedUser.id).then((msgs) => {
       setPrivateMessages((prev) => ({
@@ -424,8 +427,9 @@ const Home = () => {
           users={sortedUsers}
           currentId={user.id}
           selectedId={selectedUser?.id}
-          onSelect={(user) => {
-            setSelectedUser(user);
+          onSelect={(selected) => {
+            if (selected.id === user.id) return;
+            setSelectedUser(selected);
             setSelectedChat(null);
           }}
         />
