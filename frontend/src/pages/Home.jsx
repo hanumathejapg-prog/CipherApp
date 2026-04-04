@@ -25,8 +25,17 @@ const Home = () => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [selectedChat, setSelectedChat] = useState(null); // 'public' or null
   const [client, setClient] = useState(null);
+  const [isMobileView, setIsMobileView] = useState(() =>
+    typeof window !== 'undefined' ? window.innerWidth <= 900 : false
+  );
 
   const [unreadMessages, setUnreadMessages] = useState({});
+
+  useEffect(() => {
+    const handleResize = () => setIsMobileView(window.innerWidth <= 900);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     if (!token || !user) {
@@ -295,6 +304,8 @@ const Home = () => {
     return <div className="auth-page">Loading...</div>;
   }
 
+  const isChatOpen = selectedChat === 'public' || !!selectedUser;
+
   const handleMessageVisible = async (message) => {
     // Determine if message is private or public based on receiverId
     const isPrivate = message.receiverId !== null && message.receiverId !== undefined;
@@ -357,8 +368,8 @@ const Home = () => {
   };
 
   return (
-    <div className="layout">
-      <aside>
+    <div className={`layout ${isMobileView ? 'mobile-layout' : ''}`}>
+      <aside className={isMobileView && isChatOpen ? 'mobile-hidden' : ''}>
         <div className="profile">
           <img src={user.picture || 'https://placehold.co/40'} alt={user.name} />
           <div>
@@ -419,7 +430,18 @@ const Home = () => {
           }}
         />
       </aside>
-      <main>
+      <main className={isMobileView && !isChatOpen ? 'mobile-hidden' : ''}>
+        {isMobileView && isChatOpen && (
+          <button
+            className="mobile-back-btn"
+            onClick={() => {
+              setSelectedChat(null);
+              setSelectedUser(null);
+            }}
+          >
+            ← Back to chats
+          </button>
+        )}
         {selectedChat === 'public' ? (
           <ChatRoom
             currentId={user.id}
